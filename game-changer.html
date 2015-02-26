@@ -14,6 +14,8 @@
 <a href="/games/new">Add a new game</a>
 <h1>Current games in database</h1>
 <ul>
+
+
 	{{#each getGames}}
 		<a href="/games/{{_id}}"><li><h2>{{gameName}}</h2><p>Added at: {{convertDate createdAt}}</p></li></a>
 	{{/each}}
