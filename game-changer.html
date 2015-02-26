@@ -1,14 +1,37 @@
 <head>
-  <title>game-changer</title>
+  <title>Game Changer</title>
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
 
-  {{> hello}}
 </body>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
+<template name="home">
+<a href="/games">Go to the Games section</a>
+</template>
+
+<template name="gameList">
+<a href="/games/new">Add a new game</a>
+<h1>Current games in database</h1>
+<ul>
+	{{#each getGames}}
+		<a href="/games/{{_id}}"><li><h2>{{gameName}}</h2><p>Added at: {{convertDate createdAt}}</p></li></a>
+	{{/each}}
+</ul>
+</template>
+
+<template name="gameNew">
+<h1>Add a new game</h1>
+<form>
+	<label>Name of game
+		<input type="text" name="gameName" placeholder="Enter the game title" required>
+	</label>
+	<input type="submit" class="button" value="Add Game">	
+</form>
+</template>
+
+<template name="gameInfo">
+<h1>{{game.gameName}}</h1>
+<h2>Added at: {{convertDate game.createdAt}}</h2>
+<a href="/games">Back</a>
 </template>
